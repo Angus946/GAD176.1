@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class GruntHealth : Health
+public class GruntBehaviour : MonoBehaviour
 {
+    public Transform target;
     
-
     // Start is called before the first frame update
     void Start()
     {
-        SettingHealth();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        DamageHealth();
+        
+    }
+    private void FixedUpdate()
+    {
+        if (target != null)
+        {
+            transform.LookAt(target.position);
+        }
     }
 }

@@ -6,17 +6,16 @@ public class Health : MonoBehaviour
 {
     [SerializeField]
     // max health is private because it only changes within the class
-    private int maxHealth;
+     int maxHealth;
 
     [SerializeField]
-    float health;
+    public float health;
 
-    public float damage;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = 100;
-        health = (float)maxHealth;
+        SettingHealth();
     }
 
     // Update is called once per frame
@@ -29,12 +28,17 @@ public class Health : MonoBehaviour
     {
         if (damage !=0)
         {
-            health = health - (float)damage;
+            health = health - (int)damage;
             if (health <= 0)
             {
                 health = 0;
                 Destroy(gameObject);
             }
         }
+    }
+    public void SettingHealth()
+    {
+        maxHealth = 100;
+        health = (int)maxHealth;
     }
 }
