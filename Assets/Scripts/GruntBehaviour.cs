@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GruntBehaviour : MonoBehaviour
@@ -12,8 +13,12 @@ public class GruntBehaviour : MonoBehaviour
 
     // serialized speed for debug
     [SerializeField]
-    float speed = 1.0f;
+    float speed = 3.0f;
 
+    public int damage = 10;
+
+    [SerializeField]
+    private bool hasAttacked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +36,7 @@ public class GruntBehaviour : MonoBehaviour
         // Null reference check for player position target
         if (target != null)
         {
-            transform.LookAt(target.position);
+            transform.forward = target.position - transform.position;
             GruntMovement();
         }
     }
@@ -41,10 +46,43 @@ public class GruntBehaviour : MonoBehaviour
         // Null reference check
         if (target != null)
         {
-            // new temp variable for using in the vector3 operation
-            float moveSpeed = speed * Time.deltaTime;
-            // changes the position to move toward the player at Movespeed
-            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed);
+            if (hasAttacked == false)
+            {
+
+
+                // new temp variable for using in the vector3 operation
+                float moveSpeed = speed * Time.deltaTime;
+                // changes the position to move toward the player at Movespeed
+                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed);
+            }
+            else
+            {
+                speed = 0;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+        }
+    }
+    void GruntAttack()
+    {
+        if (target != null)
+        {
+
+            transform.localScale = new Vector3(3, 3, 3);
+            transform.rotation = new Quaternion(+3, +3, +3, +3);
+            hasAttacked = true;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (rb != null)
+        {
+            Debug.Log("collsion");
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("is player");
+                GruntAttack();
+            }
+            
         }
     }
 }

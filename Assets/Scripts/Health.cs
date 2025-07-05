@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     public float health;
 
     public int damage;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +42,10 @@ public class Health : MonoBehaviour
     {
         maxHealth = 100;
         health = (int)maxHealth;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }
