@@ -66,10 +66,12 @@ public class GruntBehaviour : MonoBehaviour
     {
         if (target != null)
         {
-
-            transform.localScale = new Vector3(3, 3, 3);
-            transform.rotation = new Quaternion(+3, +3, +3, +3);
-            hasAttacked = true;
+            if (hasAttacked == false)
+            {
+                transform.localScale = new Vector3(3, 3, 3);
+                transform.rotation = new Quaternion(+3, +3, +3, +3);
+                hasAttacked = true;
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)

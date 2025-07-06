@@ -9,10 +9,10 @@ public class Health : MonoBehaviour
      int maxHealth;
 
     [SerializeField]
-    public float health;
+    public static float health;
 
-    public int damage;
-
+    [SerializeField]
+    public static float damage;
     
     // Start is called before the first frame update
     void Start()
@@ -23,19 +23,16 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DamageHealth();
+        Debug.Log("this is the current damage " + damage);
     }
 
     public void DamageHealth ()
     {
-        if (damage !=0)
+        health = health - damage;
+        if (health <= 0)
         {
-            health = health - (int)damage;
-            if (health <= 0)
-            {
-                health = 0;
-                Destroy(gameObject);
-            }
+            health = 0;
+           
         }
     }
     public void SettingHealth()
@@ -44,8 +41,5 @@ public class Health : MonoBehaviour
         health = (int)maxHealth;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+    
 }
