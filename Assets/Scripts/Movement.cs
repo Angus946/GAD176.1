@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    private CharacterController controller;
+    private Rigidbody rb;
     private Vector3 playerVelocity;
-    private bool groundedPlayer;
+    private bool groundedPlayer = true;
     private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
 
     private void Start()
     {
-        controller = gameObject.AddComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
-
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
+        
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
@@ -44,6 +43,5 @@ public class Movement : MonoBehaviour
 
         // Combine horizontal and vertical movement
         Vector3 finalMove = (move * playerSpeed) + (playerVelocity.y * Vector3.up);
-        controller.Move(finalMove * Time.deltaTime);
     }
 }

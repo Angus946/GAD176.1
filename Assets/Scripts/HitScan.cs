@@ -33,6 +33,11 @@ public class HitScan : MonoBehaviour
         if (Physics.Raycast(transformHS.position, transformHS.forward, out hit, rangeHS) )
         {
             Debug.Log(hit.transform.name);
+           EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                enemy.DamageHealth(damageHS);
+            }
         }
        
     }

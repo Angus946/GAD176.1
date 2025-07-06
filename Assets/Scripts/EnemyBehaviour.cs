@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GruntBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     // target container for player transform, set in inspector
     public Transform target;
@@ -37,11 +37,11 @@ public class GruntBehaviour : MonoBehaviour
         if (target != null)
         {
             transform.forward = target.position - transform.position;
-            GruntMovement();
+            enemyMovement();
         }
     }
 
-    void GruntMovement()
+    void enemyMovement()
     {
         // Null reference check
         if (target != null)
@@ -62,14 +62,13 @@ public class GruntBehaviour : MonoBehaviour
             }
         }
     }
-    void GruntAttack()
+    void enemyAttack()
     {
         if (target != null)
         {
             if (hasAttacked == false)
             {
-                transform.localScale = new Vector3(3, 3, 3);
-                transform.rotation = new Quaternion(+3, +3, +3, +3);
+                transform.localScale = new Vector3(5, 5, 5);
                 hasAttacked = true;
             }
         }
@@ -82,7 +81,7 @@ public class GruntBehaviour : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 Debug.Log("is player");
-                GruntAttack();
+                enemyAttack();
             }
             
         }

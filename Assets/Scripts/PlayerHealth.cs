@@ -20,11 +20,7 @@ public class PlayerHealth : Health
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag ("grunt"))
-        {
-            Health.damage = 10;
-            Debug.Log("this is the current player damage " + damage);
-            DamageHealth();
-        }
+       
+    
     }
 }

@@ -8,12 +8,13 @@ public class CameraLocation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = Transform.position + new Vector3((float)-0.2, 0, 0);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Transform.position + new Vector3((float)-0.2, 0.5f, 0);
+        transform.rotation = Transform.rotation;
     }
 }
