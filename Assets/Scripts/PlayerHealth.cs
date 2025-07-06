@@ -5,22 +5,27 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
 
-    float playerHealth = Health.health;
+    public float playerHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         SettingHealth();
+        playerHealth = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void DamageHealth(float amount)
     {
-       
-    
+        playerHealth -= amount;
+        if (playerHealth <= 0)
+        {
+            Die();
+        }
     }
 }
