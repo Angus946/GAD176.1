@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HitScan : MonoBehaviour
 {
-    float rangeHS;
-    float damageHS;
+    float rangeHS = Gun.range;
+    float damageHS = Gun.damage;
     public Transform transformHS;
     public Camera cam;
    
@@ -33,7 +33,6 @@ public class HitScan : MonoBehaviour
         if (Physics.Raycast(transformHS.position, transformHS.forward, out hit, rangeHS) )
         {
             Debug.Log(hit.transform.name);
-
         }
        
     }

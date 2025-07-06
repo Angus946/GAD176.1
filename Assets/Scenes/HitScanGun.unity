@@ -681,8 +681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92e3cc0fa26d3f4798426d3a014190c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeHS: 100
-  damageHS: 10
   transformHS: {fileID: 801066612}
   cam: {fileID: 1616098466}
 --- !u!1 &1530951964
