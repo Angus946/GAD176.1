@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
+
+    float playerHealth = Health.health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,15 @@ public class PlayerHealth : Health
     // Update is called once per frame
     void Update()
     {
-        DamageHealth();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag ("grunt"))
+        {
+            Health.damage = 10;
+            Debug.Log("this is the current player damage " + damage);
+            DamageHealth();
+        }
     }
 }
